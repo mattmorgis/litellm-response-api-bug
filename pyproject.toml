@@ -1,0 +1,66 @@
+[project]
+name = "litellm-responses-api-bug"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dotenv>=0.9.9",
+    "openai-agents>=0.3.3",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.17.1",
+    "pytest>=8.4.1",
+    "pytest-asyncio>=1.1.0",
+    "pytest-cov>=6.2.1",
+    "ruff>=0.12.9",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.ruff.lint]
+# "I": imports are sorted following isort rules above
+#
+# "PLC0415": all imports must be at the top of the file
+#
+# "D": docstrings follow PEP 257 convention
+#    - https://peps.python.org/pep-0257/
+#
+# "DOC": docstring sections (args, returns, raises) match function signature
+#
+# "N": classes, methodsfollow PEP 8 naming conventions
+#    - https://peps.python.org/pep-0008/#naming-conventions
+#
+#
+# find and more linting rules here: https://docs.astral.sh/ruff/rules/
+preview = true
+extend-select = ["I", "PLC0415", "D", "DOC", "N"]
+ignore = [
+  "D100", # always ignore "missing docstring in public module"
+]
+
+[tool.ruff.lint.pydocstyle]
+# https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Do not require doc strings for tests
+"tests/**/*.py" = ["D"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+pretty = true
+ignore_missing_imports = true
+incremental = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-v", "--tb=short", "--cov=src", "--cov-report=term-missing"]

@@ -1,0 +1,7 @@
+model_list:
+  - model_name: gpt-5
+    litellm_params:
+      model: openai/gpt-5
+      api_key: os.environ/OPENAI_API_KEY
+router_settings:
+  optional_pre_call_checks: ["responses_api_deployment_check"]

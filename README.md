@@ -60,3 +60,11 @@ export OPENAI_BASE_URL=sk-...
 uv run main.py
 
 ```
+
+```
+user: tell me an interesting fact
+assistant: Octopuses have three hearts: two pump blood to the gills, while the third pumps it to the rest of the body. Even more unusual, their blood is blue because it uses a copper-containing protein called hemocyanin to transport oxygen, which works better than hemoglobin in cold, low-oxygen seawater.
+
+user: tell me another
+Error getting response: Error code: 400 - {'error': {'message': 'litellm.BadRequestError: AzureException BadRequestError - {\n  "error": {\n    "message": "Unknown parameter: \'input[1].status\'.",\n    "type": "invalid_request_error",\n    "param": "input[1].status",\n    "code": "unknown_parameter"\n  }\n}. Received Model Group=gpt-5-mini\nAvailable Model Group Fallbacks=None', 'type': None, 'param': None, 'code': '400'}}. (request_id: None)
+```

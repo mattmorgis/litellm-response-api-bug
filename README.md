@@ -1,21 +1,22 @@
 # LiteLLM Responses API Bug
 
-This repo demonstrates an issue with the OpenAI Agents SDK using the Responses API through LiteLLM `v1.77.3-stable`.
+This repo demonstrates an issue with the OpenAI Agents SDK using the Responses API through Azure/LiteLLM `v1.77.5-stable`.
 
-The bug happens when making a follow up request through LiteLLM. When hitting OpenAI directly the calls succeed.
+The bug happens when making a follow up request through LiteLLM. When hitting Azure directly the calls succeed.
 
 ## Steps to Reproduce
 
 ### OpenAI directly
 
-1. Set your `OPENAI_API_KEY`.
+1. Set your `OPENAI_BASE_URL` and `OPENAI_API_KEY` to azure values.
 
 ```bash
-# set OPENAI_API_KEY in .env
+# set in .env
 cp .env.example .env
 
 # or set in shell before running
-export OPENAI_API_KEY=sk-...
+export OPENAI_BASE_URL=https://<your-azure-here>.openai.azure.com/openai/v1
+export OPENAI_API_KEY=
 ```
 
 2. Run the script
@@ -33,7 +34,7 @@ assistant: Octopuses have three hearts and blue blood. Two hearts pump blood to 
 
 ### LiteLLM
 
-1. Add your `OPENAI_API_KEY` to `start_litellm.sh` script and start the proxy.
+1. Add your Azure URL to `litellm_config.yaml` and `AZURE_API_KEY` to `start_litellm.sh` script and start the proxy.
 
 ```bash
 ./start_litellm.sh

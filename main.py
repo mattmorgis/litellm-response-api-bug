@@ -19,7 +19,7 @@ def main() -> None:
     agent = Agent(
         name="sample-agent",
         instructions="You are a helpful assistant.",
-        model="gpt-5",
+        model="gpt-5-mini",
         model_settings=ModelSettings(
             reasoning=Reasoning(effort="minimal"),
         ),
